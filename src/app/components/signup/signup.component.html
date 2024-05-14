@@ -1,43 +1,42 @@
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" formControlName="username">
-        <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched">
+<div class="container">
+    <div class="signup-card">
+      <h2>Sign Up</h2>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" formControlName="username" class="form-control" placeholder="Enter your username">
+          <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched" class="error-messages">
             <span *ngIf="signupForm.get('username')?.errors?.['required']">Username is required.</span>
-            <span *ngIf="signupForm.get('username')?.errors?.['minlength']">Username must be at least 5
-                characters.</span>
+            <span *ngIf="signupForm.get('username')?.errors?.['minlength']">Username must be at least 5 characters.</span>
+          </div>
         </div>
-    </div>
-
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email">
-        <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter your email">
+          <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="error-messages">
             <span *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</span>
             <span *ngIf="signupForm.get('email')?.errors?.['email']">Invalid email format.</span>
+          </div>
         </div>
-    </div>
-
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" formControlName="password">
-        <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter your password">
+          <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="error-messages">
             <span *ngIf="signupForm.get('password')?.errors?.['required']">Password is required.</span>
-            <span *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 6
-                characters.</span>
+            <span *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</span>
+          </div>
         </div>
-    </div>
-
-    <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" formControlName="confirmPassword">
-        <div *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="Confirm your password">
+          <div *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched" class="error-messages">
             <span *ngIf="signupForm.hasError('mismatch')">Passwords do not match.</span>
             <span *ngIf="signupForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</span>
+          </div>
         </div>
+        <p [routerLink]="'/login'">Already have an account?</p>
+        <button type="submit" [disabled]="!signupForm.valid" class="btn btn-primary">Sign Up</button>
+      </form>
+      <p *ngIf="message">{{message}}</p>
     </div>
-
-    <p [routerLink]="'/login'">Already have an account</p>
-
-    <button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
-</form>
+  </div>

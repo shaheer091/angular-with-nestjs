@@ -1,22 +1,23 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" formControlName="username">
-      <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-        <span *ngIf="loginForm.get('username')?.errors?.['required']">Username is required.</span>
-      </div>
+<div class="container">
+    <div class="login-card">
+      <h2>Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" formControlName="username" class="form-control" placeholder="Enter your username">
+          <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+            <span *ngIf="loginForm.get('username')?.errors?.['required']" class="error-message">Username is required.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter your password">
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            <span *ngIf="loginForm.get('password')?.errors?.['required']" class="error-message">Password is required.</span>
+          </div>
+        </div>
+        <p [routerLink]="''">Don't have an account?</p>
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+      </form>
     </div>
-  
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" formControlName="password">
-      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-        <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</span>
-      </div>
-    </div>
-
-    <p [routerLink]="''">Dont have account</p>
-  
-    <button type="submit" [disabled]="!loginForm.valid">Login</button>
-  </form>
-  
+  </div>

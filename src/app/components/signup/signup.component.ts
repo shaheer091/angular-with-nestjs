@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 
 @Component({
@@ -9,10 +10,11 @@ import { CommonService } from 'src/app/services/common.service';
 })
 export class SignupComponent {
   signupForm!: FormGroup;
-
+  message: any;
   constructor(
     private formBuilder: FormBuilder,
-    private commonServ: CommonService
+    private commonServ: CommonService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -48,6 +50,12 @@ export class SignupComponent {
       this.commonServ.signUpUser(this.signupForm.value).subscribe({
         next: (res) => {
           console.log(res);
+          this.message = res.message;
+          if (res.success) {
+            localStorage.setItem('token', res.token);
+            const token = this.commonServ.parseJwt();
+            this.router.navigate([`/user/home`]);
+          }
         },
         error: (err) => {
           console.log(err);
