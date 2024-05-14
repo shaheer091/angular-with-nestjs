@@ -11,7 +11,7 @@ export class CommonService {
 
   api = environment.apiUrl;
   decodedToken = this.parseJwt();
-  isAdmin = this.decodedToken.isAdmin ? this.decodedToken.isAdmin : '';
+  isAdmin = this.decodedToken ? this.decodedToken.isAdmin : '';
 
   signUpUser(data: any): Observable<any> {
     return this.http.post(`${this.api}/signup`, data);
