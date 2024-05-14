@@ -10,6 +10,7 @@ import { CommonService } from 'src/app/services/common.service';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
+  message:any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,13 +31,14 @@ export class LoginComponent {
       this.commonServ.loginUser(this.loginForm.value).subscribe({
         next: (res) => {
           console.log(res);
+          this.message=res.message;
           if (res.success) {
             localStorage.setItem('token', res.token);
             const token = this.commonServ.parseJwt();
             if (token.isAdmin) {
-              this.router.navigate(['/admin/home']);
+              this.router.navigate(['/admin']);
             } else {
-              this.router.navigate(['/user/home']);
+              this.router.navigate(['/user']);
             }
             console.log(token);
           }

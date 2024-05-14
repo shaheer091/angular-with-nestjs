@@ -54,7 +54,7 @@ export class SignupComponent {
           if (res.success) {
             localStorage.setItem('token', res.token);
             const token = this.commonServ.parseJwt();
-            this.router.navigate([`/user/home`]);
+            this.router.navigate([`/user`]);
           }
         },
         error: (err) => {
