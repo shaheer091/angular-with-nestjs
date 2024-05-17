@@ -7,15 +7,12 @@ import { RouterModule } from '@angular/router';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserModule } from './modules/user/user.module';
+import { InterceptorService } from './services/interceptor.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignupComponent,
-    LoginComponent,
-  ],
+  declarations: [AppComponent, SignupComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,9 +20,11 @@ import { UserModule } from './modules/user/user.module';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    UserModule
+    UserModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

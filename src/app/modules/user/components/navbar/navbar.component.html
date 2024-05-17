@@ -34,10 +34,3 @@
         </div>
     </div>
 </nav>
-<div>
-    <video #videoElement autoplay></video>
-    <img *ngIf="photoDataUrl" [src]="photoDataUrl" alt="Captured Image">
-</div>
-<button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" (click)="openCamera()">Open Camera</button>
-<button *ngIf="showBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" (click)="capturePhoto()">Capture Photo</button>
-<button *ngIf="showUseBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" (click)="useThisImage()">Use this Image</button>

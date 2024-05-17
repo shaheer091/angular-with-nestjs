@@ -19,4 +19,8 @@ export class UserService{
     setUserProfile(imageUrl:any):Observable<any>{
         return this.http.post(`${this.api}/user/updateUserProfile`, {imageUrl})
     }
+
+    getHome():Observable<any>{
+        return this.http.get(`${this.api}/getHome`)
+    }
 }
