@@ -1,12 +1,18 @@
-<div *ngFor="let post of posts" class="post-card">
-  <h2 class="post-title">{{ post.title }}</h2>
-  <p class="post-description">{{ post.description }}</p>
-  <p class="post-price">{{ post.price | currency: 'INR' }}</p>
-  <p class="post-availability" [ngClass]="{'available': post.isAvailable, 'unavailable': !post.isAvailable}">
-    {{ post.isAvailable ? 'Available' : 'Not Available' }}
-  </p>
-  <div class="post-actions">
-    <button class="edit-button" (click)="editPost(post._id)">Edit</button>
-    <button class="delete-button" (click)="deletePost(post._id)">Delete</button>
+<div *ngIf="posts.length > 0; else noPosts">
+  <div *ngFor="let post of posts" class="post-card">
+    <h2 class="post-title">{{ post.title }}</h2>
+    <p class="post-description">{{ post.description }}</p>
+    <p class="post-price">{{ post.price | currency: 'INR' }}</p>
+    <p class="post-availability" [ngClass]="{'available': post.isAvailable, 'unavailable': !post.isAvailable}">
+      {{ post.isAvailable ? 'Available' : 'Not Available' }}
+    </p>
+    <div class="post-actions">
+      <button class="delete-button" (click)="deletePost(post._id)">Delete</button>
+    </div>
   </div>
 </div>
+
+<ng-template #noPosts>
+  <p>No posts available.</p>
+  <button [routerLink]="'/admin/'">add post</button>
+</ng-template>

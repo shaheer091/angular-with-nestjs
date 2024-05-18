@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -7,8 +8,8 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./see-posts.component.css'],
 })
 export class SeePostsComponent implements OnInit {
-  constructor(private adminServ: AdminService) {}
-  posts: any;
+  constructor(private adminServ: AdminService, private router:Router) {}
+  posts: any[]=[]
   ngOnInit(): void {
     this.seePost();
   }
@@ -24,6 +25,15 @@ export class SeePostsComponent implements OnInit {
       },
     });
   }
-  editPost(id: any) {}
-  deletePost(id: any) {}
+  deletePost(id: any) {
+    this.adminServ.deletePost(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.seePost()
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }

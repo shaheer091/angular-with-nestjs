@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AdminService } from 'src/app/services/admin.service';
 export class AddPostComponent {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private adminServ: AdminService) {}
+  constructor(private fb: FormBuilder, private adminServ: AdminService, private router:Router) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -31,6 +32,10 @@ export class AddPostComponent {
       this.adminServ.savePost(this.form.value).subscribe({
         next: (res) => {
           console.log(res);
+          const userConfirm = confirm('do you want to see all post')
+          if(userConfirm){
+            this.router.navigate(['/admin/seeAll'])
+          }
         },
         error: (err) => {
           console.log(err);
