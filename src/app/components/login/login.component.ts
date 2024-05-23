@@ -48,6 +48,7 @@ export class LoginComponent {
         },
       });
     } else {
+      alert('enter fields properly')
       // Handle form validation errors
     }
   }

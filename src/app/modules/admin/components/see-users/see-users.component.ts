@@ -6,16 +6,16 @@ import { AdminService } from 'src/app/services/admin.service';
   templateUrl: './see-users.component.html',
   styleUrls: ['./see-users.component.css'],
 })
-export class SeeUsersComponent implements OnInit{
+export class SeeUsersComponent implements OnInit {
   constructor(private adminServ: AdminService) {}
-  users:any;
+  users: any[] = [];
   ngOnInit(): void {
-    this.seeAllUsers()
+    this.seeAllUsers();
   }
   seeAllUsers() {
     this.adminServ.seeAllUsers().subscribe({
       next: (res) => {
-        this.users=res;
+        this.users = res;
         console.log(this.users);
       },
       error: (err) => {
@@ -23,5 +23,21 @@ export class SeeUsersComponent implements OnInit{
       },
     });
   }
-  deleteUser(userId:any){}
+  deleteUser(userId: any) {
+    const result = confirm(
+      'Do you really want to delete this user? This action cannot be undone.'
+    );
+    if (result) {
+      this.adminServ.deleteUser(userId).subscribe({
+        next: (res) => {
+          console.log(res);
+          alert(res.message);
+          this.seeAllUsers();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
+  }
 }

@@ -2,19 +2,19 @@
     <div class="container">
         <main>
             <section class="dashboard">
-                <h2>Welcome Back, Admin!</h2>
+                <h2>Welcome Back, {{decodedToken.username}}!</h2>
                 <div class="stats">
-                    <div class="stat">
+                    <div [routerLink]="'/admin/seePost'" class="stat">
                         <h3>Total Posts</h3>
-                        <p>142</p>
+                        <p>{{count?.post}}</p>
                     </div>
-                    <div class="stat">
+                    <div [routerLink]="'/admin/seeUsers'" class="stat">
                         <h3>Active Users</h3>
-                        <p>827</p>
+                        <p>{{count?.user}}</p>
                     </div>
                     <div class="stat">
                         <h3>Comments</h3>
-                        <p>1,254</p>
+                        <p>0</p>
                     </div>
                 </div>
             </section>
