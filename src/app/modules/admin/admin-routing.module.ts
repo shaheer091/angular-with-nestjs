@@ -4,6 +4,7 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { SeePostsComponent } from './components/see-posts/see-posts.component';
 import { AdminComponent } from './admin.component';
 import { AdminHomePageComponent } from './components/admin-home-page/admin-home-page.component';
+import { SeeUsersComponent } from './components/see-users/see-users.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'home', component: AdminHomePageComponent },
+      { path: 'seeUsers', component: SeeUsersComponent },
       { path: 'seePost', component: SeePostsComponent },
       { path: 'addPost', component: AddPostComponent },
       { path: '', redirectTo: '/admin/home', pathMatch: 'full' },

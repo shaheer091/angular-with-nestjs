@@ -1,1 +1,44 @@
-<p>landing-page works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlogVista - Angular Blog Application</title>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Unleash Your Blogging Potential</h1>
+        <p>BlogVista is a powerful Angular-based blog application that empowers you to create, publish, and manage your content effortlessly.</p>
+        <a [routerLink]="'/signup'" class="btn">Get Started</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <h2>Key Features</h2>
+      <div class="feature-list">
+        <div class="feature">
+          <img src="https://www.pngmart.com/files/15/Super-Hero-Transparent-Background.png" alt="Feature Icon">
+          <h3>Angular Powered</h3>
+          <p>Built with the latest Angular framework for a smooth and responsive user experience.</p>
+        </div>
+        <div class="feature">
+          <img src="https://www.pngmart.com/files/15/Super-Hero-Transparent-Background.png" alt="Feature Icon">
+          <h3>Rich Text Editor</h3>
+          <p>Create stunning blog posts with our intuitive and feature-rich text editor.</p>
+        </div>
+        <div class="feature">
+          <img src="https://www.pngmart.com/files/15/Super-Hero-Transparent-Background.png" alt="Feature Icon">
+          <h3>Multimedia Support</h3>
+          <p>Easily embed images, videos, and other multimedia content to enhance your blog posts.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 BlogVista. All rights reserved.</p>
+  </footer>
+</body>
+</html>

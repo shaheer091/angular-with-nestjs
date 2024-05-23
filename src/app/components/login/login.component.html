@@ -16,7 +16,7 @@
             <span *ngIf="loginForm.get('password')?.errors?.['required']" class="error-message">Password is required.</span>
           </div>
         </div>
-        <p [routerLink]="''">Don't have an account?</p>
+        <p [routerLink]="'/signup'">Don't have an account?</p>
         <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
       </form>
       <p *ngIf="message">{{message}}</p>

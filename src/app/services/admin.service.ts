@@ -21,4 +21,7 @@ export class AdminService {
   editPost(id: any, data: any) {
     return this.http.patch(`${this.api}/admin/editPost/${id}`, data);
   }
+  seeAllUsers():Observable<any>{
+    return this.http.get(`${this.api}/admin/seeAllUsers`)
+  }
 }

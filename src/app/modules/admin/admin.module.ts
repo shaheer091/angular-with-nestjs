@@ -8,6 +8,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { SeePostsComponent } from './components/see-posts/see-posts.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AdminHomePageComponent } from './components/admin-home-page/admin-home-page.component';
+import { SeeUsersComponent } from './components/see-users/see-users.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AdminHomePageComponent } from './components/admin-home-page/admin-home-
     SeePostsComponent,
     NavBarComponent,
     AdminHomePageComponent,
+    SeeUsersComponent,
   ],
   imports: [
     CommonModule,

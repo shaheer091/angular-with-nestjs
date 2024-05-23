@@ -1,17 +1,21 @@
-import { Injectable } from '@angular/core';
+import { inject } from '@angular/core';
+import { CanActivateFn } from '@angular/router';
 import { CommonService } from '../services/common.service';
-import { CanActivate } from '@angular/router';
+import { Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class AuthGuardService implements CanActivate {
-  constructor(private commonServ: CommonService) {}
-  canActivate(): boolean {
-    if (this.commonServ.isLoggedIn()) {
-      return false;
+export const authGuard: CanActivateFn = (route, state) => {
+  const commonServ = inject(CommonService);
+  const router = inject(Router);
+
+  if (commonServ.isLoggedIn()) {
+    const decodedToken = commonServ.parseJwt();
+    if (decodedToken.isAdmin) {
+      router.navigate(['/admin/home']);
     } else {
-      return true;
+      router.navigate(['/user/home']);
     }
+    return false;
+  } else {
+    return true;
   }
-}
+};
