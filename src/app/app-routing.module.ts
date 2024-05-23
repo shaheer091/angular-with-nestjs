@@ -15,13 +15,11 @@ const routes: Routes = [
     canActivate: [UserGuardService],
     loadChildren: () =>
       import('./modules/user/user.module').then((user) => user.UserModule),
-    component: UserComponent,
   },
   {
     path: 'admin',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((admin) => admin.AdminModule),
-    component: AdminComponent,
   },
 ];
 

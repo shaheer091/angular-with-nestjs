@@ -1,0 +1,10 @@
+<nav class="admin-navbar">
+    <div class="navbar-brand">Admin Panel</div>
+    <ul class="navbar-menu">
+      <li class="navbar-item"><a [routerLink]="'/admin'">Home</a></li>
+      <li class="navbar-item"><a [routerLink]="'/admin/addPost'">Add Post</a></li>
+      <li class="navbar-item"><a [routerLink]="'/admin/seePost'">See Post</a></li>
+      <li class="navbar-item"><a (click)="logout()">Logout</a></li>
+    </ul>
+  </nav>
+  

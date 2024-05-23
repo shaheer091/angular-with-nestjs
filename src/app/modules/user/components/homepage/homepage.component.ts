@@ -8,10 +8,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomepageComponent implements OnInit {
   constructor(private userServ: UserService) {}
+  posts:any;
   ngOnInit(): void {
     this.userServ.getHome().subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
+        this.posts = res;
+        console.log(this.posts);
       },
       error: (err) => {
         console.log(err);

@@ -15,10 +15,10 @@ export class AdminService {
   seePost(): Observable<any> {
     return this.http.get(`${this.api}/admin/seePost`);
   }
-  deletePost(id:any):Observable<any>{
-    return this.http.delete(`${this.api}/admin/deletePost/${id}`)
+  deletePost(id: any): Observable<any> {
+    return this.http.delete(`${this.api}/admin/deletePost/${id}`);
   }
-  editPost(id:any, data:any){
-    return this.http.patch(`${this.api}/admin/editPost/${id}`, data)
+  editPost(id: any, data: any) {
+    return this.http.patch(`${this.api}/admin/editPost/${id}`, data);
   }
 }

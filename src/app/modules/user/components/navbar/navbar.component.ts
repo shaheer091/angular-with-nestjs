@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { CommonService } from 'src/app/services/common.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -7,9 +8,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  constructor(private userServ: UserService) {}
+  constructor(private commonServ: CommonService) {}
 
   logout() {
-    this.userServ.logout();
+    this.commonServ.logout();
   }
 }

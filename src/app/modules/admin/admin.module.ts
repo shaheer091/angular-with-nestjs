@@ -6,9 +6,17 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SeePostsComponent } from './components/see-posts/see-posts.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { AdminHomePageComponent } from './components/admin-home-page/admin-home-page.component';
 
 @NgModule({
-  declarations: [AdminComponent, AddPostComponent, SeePostsComponent],
+  declarations: [
+    AdminComponent,
+    AddPostComponent,
+    SeePostsComponent,
+    NavBarComponent,
+    AdminHomePageComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,

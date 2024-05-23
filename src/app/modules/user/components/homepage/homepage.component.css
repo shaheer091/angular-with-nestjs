@@ -1,0 +1,33 @@
+.post-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.post-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.post-description {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.post-price {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #27ae60;
+}
