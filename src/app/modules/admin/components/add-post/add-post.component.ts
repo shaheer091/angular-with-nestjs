@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
@@ -8,34 +8,27 @@ import { AdminService } from 'src/app/services/admin.service';
   templateUrl: './add-post.component.html',
   styleUrls: ['./add-post.component.css'],
 })
-export class AddPostComponent {
-  form!: FormGroup;
+export class AddPostComponent implements OnInit {
+  postForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private adminServ: AdminService, private router:Router) {}
-
+  constructor(private fb: FormBuilder, private adminServ: AdminService) {}
   ngOnInit(): void {
-    this.createForm();
+    this.initForm();
   }
-
-  createForm() {
-    this.form = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      price: ['', [Validators.required, Validators.pattern(/^\d*\.?\d*$/)]],
-      isAvailable: [false],
+  initForm() {
+    this.postForm = this.fb.group({
+      title: ['', [Validators.required]],
+      content: ['', [Validators.required]],
     });
   }
 
   onSubmit() {
-    if (this.form.valid) {
-      console.log(this.form.value);
-      this.adminServ.savePost(this.form.value).subscribe({
+    if (this.postForm.valid) {
+      console.log('Form Submitted!', this.postForm.value);
+      this.adminServ.savePost(this.postForm.value).subscribe({
         next: (res) => {
           console.log(res);
-          const userConfirm = confirm('do you want to see all post')
-          if(userConfirm){
-            this.router.navigate(['/admin/seeAll'])
-          }
+          this.postForm.reset();
         },
         error: (err) => {
           console.log(err);

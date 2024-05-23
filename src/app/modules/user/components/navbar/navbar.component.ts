@@ -1,6 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',

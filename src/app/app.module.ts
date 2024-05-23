@@ -10,9 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserModule } from './modules/user/user.module';
 import { InterceptorService } from './services/interceptor.service';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, LoginComponent],
+  declarations: [AppComponent, SignupComponent, LoginComponent, LandingPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
