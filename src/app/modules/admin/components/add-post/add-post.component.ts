@@ -35,7 +35,7 @@ export class AddPostComponent implements OnInit {
         },
       });
     } else {
-      console.log('Form is invalid');
+      alert('Form is invalid');
     }
   }
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { UserComponent } from './user.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       { path: 'home', component: HomepageComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: '', redirectTo: '/user/home', pathMatch: 'full' },
     ],
   },

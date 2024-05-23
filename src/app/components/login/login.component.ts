@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private commonServ: CommonService,
-    private router: Router
+    private router: Router,
+    private notiServ:NotificationService
   ) {}
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class LoginComponent {
           if (res.success) {
             localStorage.setItem('token', res.token);
             const token = this.commonServ.parseJwt();
+            this.notiServ.socket = this.notiServ.connectSocket()
             if (token.isAdmin) {
               this.router.navigate(['/admin']);
             } else {
